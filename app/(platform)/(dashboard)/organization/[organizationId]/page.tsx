@@ -1,6 +1,7 @@
 import {create} from '@/actions/create-board'
 import {Button} from "@/components/ui/button";
 import {db} from "@/lib/db";
+import Form from "./form";
 import Board from "./board";
 const OrganizationIdPage = async () => {
 
@@ -8,18 +9,7 @@ const OrganizationIdPage = async () => {
 
     return (
         <div className="flex flex-col space-y-4">
-            <form action={create}>
-                <input
-                id="title"
-                name="title"
-                required
-                placeholder="Enter a board title"
-                className="border-black border p-1"
-                />
-                <Button type="submit">
-                    Submit
-                </Button>
-            </form>
+            <Form/>
             <div className="space-y-2">
                 {boards.map((board) => (
                     <Board key={board.id} board={board}/>
