@@ -1,10 +1,28 @@
-import {auth, OrganizationSwitcher} from "@clerk/nextjs";
 
+import {db} from "@/lib/db"
 const OrganizationIdPage = () => {
-    const {userId,orgId} = auth()
+
+    async function create(formData:FormData) {
+        "use server";
+        const title:any = formData.get("title");
+        await db.board.create({
+            data: {
+                title,
+            }
+        })
+    }
+
     return (
         <div>
-            Organization Page
+            <form action={create}>
+                <input
+                id="title"
+                name="title"
+                required
+                placeholder="Enter a board title"
+                className="border-black border p-1"
+                />
+            </form>
         </div>
     )
 }
