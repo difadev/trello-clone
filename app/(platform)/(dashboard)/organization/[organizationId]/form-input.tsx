@@ -12,7 +12,7 @@ export const FormInput  = ({errors} : FormInputProps) => {
     const {pending} = useFormStatus();
     return (
        <>
-           <Input
+           <input
                id="title"
                name="title"
                required
